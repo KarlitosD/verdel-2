@@ -3,26 +3,7 @@ import Head from 'next/head'
 import { unstable_getServerSession } from "next-auth/next"
 import { authOptions } from './api/auth/[...nextauth]'
 
-const SECTIONS = [
-  {
-    name: "Verduleria",
-    products: [
-      {
-        id: 1,
-        name: "1L de leche",
-        description: "Marca el tren",
-        bought: false,
-      },
-      {
-        id: 2,
-        name: "1L de agua",
-        description: "Villa del cencio o si no hay Kesten",
-        bought: false,
-      }
-    ],
-    color: 'emerald'
-  }
-]
+
 
 const AddButton = ({ color, children }) => <button className={`bg-${color}-500 border-none rounded-sm color-white py-1 px-2`}>{children}</button> 
 const ProductButton = ({ color, children }) => <button className={`border-none bg-transparent text-white px-3 rounded-lg hover:bg-${color}-500`}>{children}</button>

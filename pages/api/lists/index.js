@@ -4,7 +4,13 @@ import { authOptions } from 'pages/api/auth/[...nextauth]'
 import { Group } from "/db/models"
 
 const handlers = {
+    async GET(req, res, session){
+        // const { id } = session.user
+        const groups = await Group.findAll()
+        res.send(groups)
+    },
     async POST(req, res){
+        
         const { name } = req.body
         
         const newGroup = await Group.create({
@@ -12,11 +18,6 @@ const handlers = {
             name
         })
         res.send({ message: "Group created" })
-    },
-    async GET(req, res, session){
-        const { id } = session.user
-        const groups = await Group.findAll()
-        res.send(groups)
     }
 }
 
