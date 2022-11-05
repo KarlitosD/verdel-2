@@ -5,6 +5,7 @@ import { authOptions } from './api/auth/[...nextauth]'
 
 
 
+
 const AddButton = ({ color, children }) => <button className={`bg-${color}-500 border-none rounded-sm color-white py-1 px-2`}>{children}</button> 
 const ProductButton = ({ color, children }) => <button className={`border-none bg-transparent text-white px-3 rounded-lg hover:bg-${color}-500`}>{children}</button>
 
