@@ -15,7 +15,7 @@
 # production
 /build
 
-/db/storage.sqlite
+/db/*.sqlite
 
 # misc
 .DS_Store
