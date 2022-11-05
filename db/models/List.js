@@ -1,8 +1,8 @@
 import { DataTypes } from "sequelize";
 import { sequelize } from "db";
-import Sections from "./Sections";
+import Section from "./Section";
 
-const Groups = sequelize.define("groups", {
+const List = sequelize.define("lists", {
     id: {
         type: DataTypes.STRING(30),
         primaryKey: true,
@@ -11,7 +11,8 @@ const Groups = sequelize.define("groups", {
     name: DataTypes.STRING(),
 })
 
-Groups.hasMany(Sections)
+List.hasMany(Section)
+Section.belongsTo(List)
 // await sequelize.sync()
 
-export default Groups
+export default List

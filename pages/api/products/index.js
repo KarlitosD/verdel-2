@@ -1,12 +1,12 @@
 import Products from "db/models/Products"
 import { unstable_getServerSession } from "next-auth/next"
 import { authOptions } from 'pages/api/auth/[...nextauth]'
-import { Prroduct } from "/db/models"
+import { Product } from "/db/models"
 
 const handlers = {
     async GET(req, res, session){
         const { id } = req.params
-        const products = await Products.findAll({ where: { id } })
+        const products = await Product.findAll({ where: { id } })
         res.send(products)
     },
     POST(req, res){
