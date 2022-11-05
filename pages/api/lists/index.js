@@ -2,7 +2,7 @@ import { unstable_getServerSession } from "next-auth/next"
 import { uid } from "uid/secure"
 import { authOptions } from 'pages/api/auth/[...nextauth]'
 import Models from "/db/models/index.js"
-const { List } = Models
+const { List, User } = Models
 
 const handlers = {
     async GET(req, res, session){
@@ -12,13 +12,15 @@ const handlers = {
     },
     async POST(req, res, session){
         const { name } = req.body
-        const newList = await List.create({
-            id: uid(20),
-            name,
-            creatorId: session.user.id
-        })
-        console.log(newList)
-        // const newList = {}
+        const [newList, creator] = await Promise.all([
+            List.create({
+                id: uid(20),
+                name,
+                creatorId: session.user.id
+            }),
+            User.findByPk(session.user.id, { attributes: ["id"] })
+        ])
+        await newList.addUser(creator)
         res.send({ message: "List created", list: newList })
     }
 }
