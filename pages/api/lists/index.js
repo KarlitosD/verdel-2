@@ -1,13 +1,15 @@
 import { unstable_getServerSession } from "next-auth/next"
 import { uid } from "uid/secure"
-import { authOptions } from 'pages/api/auth/[...nextauth]'
+import { authOptions } from '/pages/api/auth/[...nextauth]'
 import Models from "/db/models/index.js"
 const { List, User } = Models
 
 const handlers = {
     async GET(req, res, session){
-        // const { id } = session.user
-        const lists = await List.findAll()
+        const { id } = session.user
+        const user = await User.findByPk(id, { attributes: ["id"] })
+        const lists = await user.getLists()
+        console.log(JSON.stringify(lists, null, 2))
         res.send(lists)
     },
     async POST(req, res, session){
@@ -27,7 +29,6 @@ const handlers = {
 
 export default async function handler(req, res){
     try {
-        console.log("Uwu")
         const session = await unstable_getServerSession(req, res, authOptions)
         if(!session) throw new Error("No autorizado")
         const fn = handlers[req.method]
