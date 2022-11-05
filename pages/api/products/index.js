@@ -1,6 +1,6 @@
 import Products from "db/models/Products"
 import { unstable_getServerSession } from "next-auth/next"
-import { authOptions } from 'pages/api/auth/[...nextauth]'
+import { authOptions } from '/pages/api/auth/[...nextauth]'
 import { Product } from "/db/models"
 
 const handlers = {
