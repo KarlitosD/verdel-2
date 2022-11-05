@@ -1,6 +1,5 @@
-import { useState } from "react";
-import { useSession } from "next-auth/react";
 import useSWR from "swr";
+import Jazzicon from 'react-jazzicon'
 
 
 export default function Menu() {
@@ -10,7 +9,8 @@ export default function Menu() {
     <>
       <div>
         {lists?.map(list => (
-            <div key={list.id}>
+            <div key={list.id} className="inline-flex">
+                <Jazzicon diameter={50} seed={Number(list.name.split("").map(l => l.charCodeAt()).join(""))} />
                 <h1>{list.name}</h1>
             </div>
         ))}
