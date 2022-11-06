@@ -1,11 +1,11 @@
 import { DataTypes } from "sequelize";
 import { sequelize } from "db";
 
-const Products = sequelize.define("products", {
+const Product = sequelize.define("products", {
     id: {
-        type: DataTypes.INTEGER,
+        type: DataTypes.STRING(30),
         primaryKey: true,
-        autoIncrement: true
+        allowNull: false
     },
     name: DataTypes.STRING(100),
     description: DataTypes.STRING(200)
@@ -13,4 +13,4 @@ const Products = sequelize.define("products", {
 
 // await sequelize.sync()
 
-export default Products
+export default Product

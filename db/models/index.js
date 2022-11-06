@@ -1,12 +1,12 @@
 import { sequelize } from "db";
 
-import Products from "./Products";
-import Sections from "./Sections";
-import Groups from "./Groups";
-import User from "./Users";
+import Product from "./Product";
+import Section from "./Section";
+import List from "./List";
+import User from "./User";
 
-sequelize.sync()
+// sequelize.sync()
 
-const models = { Products, Sections, Groups, User }
+const models = { Product, Section, List, User }
 
 export default models
