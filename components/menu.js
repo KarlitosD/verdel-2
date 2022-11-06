@@ -11,6 +11,7 @@ export default function Menu() {
   return (
     <>
       <div className="w-1/5 flex flex-col bg-gray-300 border-r border-gray-500 h-screen">
+        <MenuHeader/>
         {lists?.map((list) => (
           <div
             key={list.id}
