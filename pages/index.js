@@ -1,5 +1,5 @@
 import Head from "next/head";
-import Menu from "../components/Menu";
+import Menu from "components/Menu";
 // import styled from "styled-components"
 import { unstable_getServerSession } from "next-auth/next";
 import { authOptions } from "./api/auth/[...nextauth]";
