@@ -1,22 +1,14 @@
 import { unstable_getServerSession } from "next-auth/next"
-import { uid } from "uid/secure"
 import { authOptions } from '/pages/api/auth/[...nextauth]'
-import Models from "/db/models"
-
+import Models from "/db/models/index.js"
 const { Product } = Models
 
 const handlers = {
-    async POST(req, res){
-        const { name, description, sectionId } = req.body
-        console
-        const newProduct = await Product.create({ 
-            id: uid(20),
-            name, 
-            description,
-            sectionId 
-        })
-        res.send({ message: "Product created", product: newProduct })
-    }
+    async GET(req, res, session){
+        const { id: sectionId } = req.query
+        const products = await Product.findAll({ where: { sectionId } })
+        res.send(products)
+    },
 }
 
 export default async function handler(req, res){
@@ -24,8 +16,10 @@ export default async function handler(req, res){
         const session = await unstable_getServerSession(req, res, authOptions)
         if(!session) throw new Error("No autorizado")
         const fn = handlers[req.method]
-        if(fn) await fn(req, res, session)
+        if(!fn) throw new Error("Method not allowed")
+        await fn(req, res, session)
     } catch (error) {
+        console.log(error.message)
         res.status(400).send({ message: error.message })
     }
 }
