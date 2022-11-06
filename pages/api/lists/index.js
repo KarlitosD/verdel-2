@@ -1,6 +1,7 @@
 import { uid } from "uid/secure"
-import { createHandler, authMiddleware } from "/server/middlewares"
+import { createHandler, authMiddleware, withSchema } from "/server/middlewares"
 import Models from "/db/models/index.js"
+import { editCreateListSchema } from "server/schemas"
 const { List, User } = Models
 
 const handlers = {
@@ -17,7 +18,7 @@ const handlers = {
         })
         res.send(lists)
     },
-    async POST(req, res){
+    POST: withSchema(editCreateListSchema, async (req, res) => {
         const { body: { name }, session } = req
         const [newList, creator] = await Promise.all([
             List.create({
@@ -29,7 +30,7 @@ const handlers = {
         ])
         await newList.addUser(creator)
         res.send({ message: "List created", list: newList })
-    }
+    })
 }
 
 export default createHandler(authMiddleware(), handlers)
