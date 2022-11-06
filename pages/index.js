@@ -18,28 +18,30 @@ export default function Home() {
           <link rel="icon" href="/logo.svg" />
         </Head>
         <Menu />
-        <main className="w-full ml-5">
-          <div className="bg-orange-600 w-3/4 h-10 mt-2 rounded-lg">
-            <input type="text" className="rounded-lg flex-1 ml-14 mt-1 h-8 absolute"></input>
-            <button className="w-6 h-6 bg-orange-600 ml-80 mt-2 rounded-lg">
-              <PencilSquareIcon className="h-6 w-6 transition stroke-white hover:stroke-neutral-900" />
-            </button>
-            <button onClick={() => setIsVisible(isVisible => !isVisible)} className="w-6 h-6 bg-orange-600 ml-5 mt-2">
-              <ChevronDownIcon onCLick={() => setIsRotate(isRotate => !isRotate)} className={`h-6 w-6 transition stroke-white hover:stroke-neutral-900 ${isRotate ? "rotate-0" : "rotate-180"}`} />
-            </button>
-          </div>
-          <div className={`bg-gray-700 w-3/4 h-80 rounded-lg ${isVisible ? "visible" : "invisible"}`}>
-            <button className="h-10 w-80 bg-gray-700 text-white rounded-lg flex-1 ml-60 mt-10 outline outline-offset-2 outline-orange-600 text-lg font-bold font-mono hover:bg-gray-800">
-              <p>Nuevo producto (っ◔◡◔)っ</p>
-            </button>
-            <div className="h-10 w-90 mt-10 ml-5 mr-5 bg-orange-600 rounded-lg">
-              <input type="text" className="rounded-lg flex-1 ml-1 mt-1 h-8 w-80 absolute"></input>
+        <main className="w-full mx-5">
+          <div className="rounded-lg overflow-hidden mt-2">
+            <div className="bg-orange-600 w-full h-10">
+              <input type="text" className="rounded-lg flex-1 ml-14 mt-1 h-8 absolute"></input>
               <button className="w-6 h-6 bg-orange-600 ml-80 mt-2 rounded-lg">
-                <TrashIcon className="h-6 w-6 transition stroke-white ml-80 hover:stroke-neutral-900" />
+                <PencilSquareIcon className="h-6 w-6 transition stroke-white hover:stroke-neutral-900" />
               </button>
-              <button className="w-6 h-6 bg-orange-600 ml-70 mt-2 rounded-lg">
-                <PencilSquareIcon className="h-6 w-6 transition stroke-white ml-70 hover:stroke-neutral-900" />
+              <button onClick={() => setIsVisible(isVisible => !isVisible)} className="w-6 h-6 bg-orange-600 ml-5 mt-2">
+                <ChevronDownIcon onCLick={() => setIsRotate(isRotate => !isRotate)} className={`h-6 w-6 transition stroke-white hover:stroke-neutral-900 ${isRotate ? "rotate-0" : "rotate-180"}`} />
               </button>
+            </div>
+            <div className={`bg-gray-700 w-full h-80 ${isVisible ? "visible" : "invisible"}`}>
+              <button className="h-10 w-80 bg-gray-700 text-white rounded-lg flex-1 ml-60 mt-10 outline outline-offset-2 outline-orange-600 text-lg font-bold font-mono hover:bg-gray-800">
+                <p>Nuevo producto (っ◔◡◔)っ</p>
+              </button>
+              <div className="h-10 w-90 mt-10 ml-5 mr-5 bg-orange-400 rounded-lg">
+                <input type="text" className="rounded-lg flex-1 ml-1 mt-1 h-8 w-80 absolute"></input>
+                <button className="w-6 h-6 bg-orange-400 ml-80 mt-2 rounded-lg">
+                  <TrashIcon className="h-6 w-6 transition stroke-white ml-80 hover:stroke-neutral-900" />
+                </button>
+                <button className="w-6 h-6 bg-orange-400 ml-70 mt-2 rounded-lg">
+                  <PencilSquareIcon className="h-6 w-6 transition stroke-white ml-70 hover:stroke-neutral-900" />
+                </button>
+              </div>
             </div>
           </div>
         </main>
