@@ -9,7 +9,11 @@ const Product = sequelize.define("products", {
     },
     name: DataTypes.STRING(300),
     description: DataTypes.STRING(200),
-    bought: DataTypes.BOOLEAN
+    bought: {
+        type: DataTypes.BOOLEAN,
+        defaultValue: false,
+        allowNull: false
+    }
 })
 
 // await sequelize.sync()
