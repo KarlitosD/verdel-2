@@ -1,5 +1,5 @@
 import { uid } from "uid/secure"
-import { createHandler, authMiddleware } from "/middlewares"
+import { createHandler, authMiddleware } from "/db/middlewares"
 import Models from "/db/models/index.js"
 const { Section } = Models
 
