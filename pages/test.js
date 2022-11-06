@@ -29,8 +29,8 @@ const ButtonTest = ({ children, className, ...props }) => (
     </button>
 );
 
-const fetchTest = (endpoint, options) => {
-    const { method } = options;
+const fetchTest = (endpoint, options = {}) => {
+    const { method = "GET" } = options;
     if (method === "POST" || method === "PUT" || method === "PATCH") {
         options = {
             ...options,
