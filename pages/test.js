@@ -10,52 +10,42 @@ const newSection = {
     color: "emerald"
 }
 
-function ListTest({ data }) {
+const editSectionData = {
+    name: "Other name section"
+}
+
+const ButtonTest = ({ children, className, ...props }) => <button className="border border-black p-1" {...props}>{children}</button>
+
+const fetchTest = (endpoint, options) => {
+    const { method } = options
+    if(method === "POST" || method === "PUT" || method === "PATCH" ){
+        options = { ...options, headers: { 'Content-Type': 'application/json' }, body: JSON.stringify(options.body) }
+    }
+    return fetch(endpoint, options).then(res => res.json())
+}
+
+function ListTest({ data, listId }) {
     const createList = () => {
-        fetch("/api/lists", {
-            method: "POST",
-            headers: {
-                'Content-Type': 'application/json'
-            },
-            body: JSON.stringify(newList)
-        })
-            .then(res => res.json())
+        fetchTest("/api/lists", { method: "POST", body: newList })
             .then(console.log)
     }
 
-    const enterList = (event) => {
-        event.preventDefault()
-        const listId = event.target.id.value
-        fetch("/api/lists/" + listId, {
-            method: "POST",
-            headers: {
-                'Content-Type': 'application/json'
-            },
-            body: JSON.stringify({ userId: data.user.id })
-        })
-            .then(res => res.json())
+    const enterList = () => {
+        fetchTest("/api/lists/" + listId, {method: "POST", body: { userId: data.user.id }})
             .then(console.log)
     }
-
+    
     const getMyLists = () => {
-        fetch("/api/lists")
-            .then(res => res.json())
+        fetchTest("/api/lists")
             .then(console.log)
     }
 
     return (
         <div className="flex gap-4">
             <h3>Lists</h3>
-            <div>
-                <button className="border border-black p-1" onClick={createList}>Crear Lista</button>
-            </div>
-            <form onSubmit={enterList} className="border border-black p-1">
-                <input type="text" placeholder="List id" name="id" className="border-b border-blue-600 mr-1" />
-                <button>Entrar en una Lista</button>
-            </form>
-            <div>
-                <button className="border border-black p-1" onClick={getMyLists}>Obtener mis listas</button>
-            </div>
+            <ButtonTest onClick={createList}>Crear Lista</ButtonTest>
+            <ButtonTest onClick={enterList}>Entrar en una Lista</ButtonTest>
+            <ButtonTest onClick={getMyLists}>Obtener mis listas</ButtonTest>
         </div>
     )
 }
@@ -64,38 +54,39 @@ function ListTest({ data }) {
 export default function Test() {
     const { data } = useSession()
     const [listId, setListId] = useState("")
+    const [sectionId, setSectionId] = useState("")
 
     const createSection = () => {
-        fetch("/api/sections", {
-            method: "POST",
-            headers: {
-                "Content-Type": "application/json"
-            },
-            body: JSON.stringify({
-                ...newSection,
-                listId
-            })
-        })
-        .then(res => res.json())
-        .then(console.log)
+        fetchTest("/api/sections", { method: "POST", body: {...newSection, listId } })
+            .then(console.log)
     }
 
     const getSections = () => {
-        fetch(`/api/lists/${listId}/sections`)
-            .then(res => res.json())
+        fetchTest(`/api/lists/${listId}/sections`)
+            .then(console.log)
+    }
+
+    const deleteSection = () => {
+        fetchTest(`/api/sections/${sectionId}`, { method: "DELETE" })
+            .then(console.log)
+    }
+
+    const editSection = () => {
+        fetchTest(`/api/sections/${sectionId}`, { method: "PATCH", body: editSectionData })
             .then(console.log)
     }
 
     return (
         <div className="p-4 flex flex-col gap-2">
-            <input type="text" name="id" className="border-b border-blue-600" placeholder="List id" onChange={e => setListId(e.target.value)} />
-            <ListTest data={data} />
+            <input className="border-b border-blue-600" placeholder="List id" value={listId} onChange={e => setListId(e.target.value)} />
+            <input className="border-b border-blue-600" placeholder="Section id" value={sectionId} onChange={e => setSectionId(e.target.value)} />
+            <ListTest data={data} listId={listId} sectionId={sectionId} />
             <div className="flex gap-4">
                 <h3>Sections</h3>
-                
-                <button className="border border-black p-1" onClick={createSection}>Crear Lista</button>
-                <button className="border border-black p-1" onClick={getSections}>Obtener listas</button>
-
+                <ButtonTest onClick={createSection}>Crear Seccion</ButtonTest>
+                <ButtonTest onClick={getSections}>Obtener Secciones</ButtonTest>
+                <ButtonTest onClick={deleteSection}>Eliminar seccion</ButtonTest>
+                <ButtonTest onClick={editSection}>Editar seccion</ButtonTest>
             </div>
         </div>
     )
