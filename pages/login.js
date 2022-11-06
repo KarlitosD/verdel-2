@@ -5,14 +5,14 @@ import { unstable_getServerSession } from "next-auth/next"
 const Login = () => {
   return (
     <>
-      <div class="min-h-screen flex flex-col justify-center bg-indigo-600">
-        <div class="bg-white mx-auto max-w-md py-8 px-10 shadow rounded-lg">
-          <div class="mb-4">
+      <div className="min-h-screen flex flex-col justify-center bg-indigo-600">
+        <div className="bg-white mx-auto max-w-md py-8 px-10 shadow rounded-lg">
+          <div className="mb-4">
             <img src="/" alt=""/>
           </div>
           <form>
-            <div class="mb-4">
-              <button class="inline-block w-full px-8 py-4 leading-none text-white bg-indigo-600 hover:bg-indigo-700 font-semibold rounded shadow">¡Inicia sesión!</button>
+            <div className="mb-4">
+              <button onClick={()=> signIn('google')} className="inline-block w-full px-8 py-4 leading-none text-white bg-indigo-600 hover:bg-indigo-700 font-semibold rounded shadow">¡Inicia sesión!</button>
             </div>
           </form>
         </div>
