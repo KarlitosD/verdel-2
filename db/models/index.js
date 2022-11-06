@@ -5,7 +5,7 @@ import Section from "./Section";
 import List from "./List";
 import User from "./User";
 
-// sequelize.sync()
+sequelize.sync()
 
 const models = { Product, Section, List, User }
 
