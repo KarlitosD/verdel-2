@@ -6,9 +6,15 @@ const { List, User } = Models
 const handlers = {
     async GET(req, res){
         const { id } = req.session.user
-        const user = await User.findByPk(id, { attributes: ["id"] })
-        const lists = await user.getLists()
-        console.log(JSON.stringify(lists, null, 2))
+        const { lists } = await User.findByPk(id, { 
+            attributes: ["id"],
+            include: {
+                model: List,
+                through: {
+                    attributes: []
+                }
+            }
+        })
         res.send(lists)
     },
     async POST(req, res){
