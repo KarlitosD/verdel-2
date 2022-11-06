@@ -7,14 +7,12 @@ const handlers = {
     async GET(req, res, session){
         const { id: listId } = req.query
         const sections = await Section.findAll({ where: { listId } })
-
         res.send(sections)
       },
   }
   
   export default async function handler(req, res){
     try {
-        console.log("uwu")
         const session = await unstable_getServerSession(req, res, authOptions)
         if(!session) throw new Error("No autorizado")
         const fn = handlers[req.method]

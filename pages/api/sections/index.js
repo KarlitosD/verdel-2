@@ -5,10 +5,6 @@ import Models from "/db/models/index.js"
 const { Section } = Models
 
 const handlers = {
-    async GET(req, res, session){
-
-      res.send([])
-    },
     async POST(req, res, session){
         const { listId, ...sectionRaw } = req.body
         const newSection = await Section.create({

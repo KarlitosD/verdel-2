@@ -6,7 +6,7 @@ const { Section } = Models
 const handlers = {
     async PATCH(req, res, session){
         const { query, body } = req
-        Section.update({ ...body },{ where: { id: query.id } })
+        await Section.update({ ...body },{ where: { id: query.id } })
         res.send({ message: "Section edited" })
     },
     async DELETE(req, res, session){
