@@ -3,10 +3,12 @@ import Menu from "components/Menu";
 // import styled from "styled-components"
 import { unstable_getServerSession } from "next-auth/next";
 import { authOptions } from "./api/auth/[...nextauth]";
-import { ArrowDownIcon, PencilSquareIcon } from '@heroicons/react/24/outline'
+import { ChevronDownIcon, PencilSquareIcon, TrashIcon } from '@heroicons/react/24/outline'
 import useSections from "hooks/useSections";
-
+import { useState } from "react";
 export default function Home() {
+  const [isVisible, setIsVisible] = useState(false)
+  const [isRotate, setIsRotate] = useState(false)
   return (
     <>
       <div className="min-h-screen inline-flex w-full justify-center bg-gray-200">
@@ -16,17 +18,29 @@ export default function Home() {
           <link rel="icon" href="/logo.svg" />
         </Head>
         <Menu />
-        <main className="w-full ">
+        <main className="w-full ml-5">
           <div className="bg-orange-600 w-3/4 h-10 mt-2 rounded-lg">
+            <input type="text" className="rounded-lg flex-1 ml-14 mt-1 h-8 absolute"></input>
             <button className="w-6 h-6 bg-orange-600 ml-80 mt-2 rounded-lg">
-              <PencilSquareIcon className="h-6 w-6 transition hover:stroke-gray-200" />
+              <PencilSquareIcon className="h-6 w-6 transition stroke-white hover:stroke-neutral-900" />
             </button>
-            <button className="w-6 h-6 bg-orange-600 ml-5 mt-2">
-              <ArrowDownIcon className="h-6 w-6 transition hover:stroke-gray-200"/>
+            <button onClick={() => setIsVisible(isVisible => !isVisible)} className="w-6 h-6 bg-orange-600 ml-5 mt-2">
+              <ChevronDownIcon onCLick={() => setIsRotate(isRotate => !isRotate)} className={`h-6 w-6 transition stroke-white hover:stroke-neutral-900 ${isRotate ? "rotate-0" : "rotate-180"}`} />
             </button>
           </div>
-          <div className="bg-gray-700 w-3/4 h-80 rounded-lg">
-
+          <div className={`bg-gray-700 w-3/4 h-80 rounded-lg ${isVisible ? "visible" : "invisible"}`}>
+            <button className="h-10 w-80 bg-gray-700 text-white rounded-lg flex-1 ml-60 mt-10 outline outline-offset-2 outline-orange-600 text-lg font-bold font-mono hover:bg-gray-800">
+              <p>Nuevo producto (っ◔◡◔)っ</p>
+            </button>
+            <div className="h-10 w-90 mt-10 ml-5 mr-5 bg-orange-600 rounded-lg">
+              <input type="text" className="rounded-lg flex-1 ml-1 mt-1 h-8 w-80 absolute"></input>
+              <button className="w-6 h-6 bg-orange-600 ml-80 mt-2 rounded-lg">
+                <TrashIcon className="h-6 w-6 transition stroke-white ml-80 hover:stroke-neutral-900" />
+              </button>
+              <button className="w-6 h-6 bg-orange-600 ml-70 mt-2 rounded-lg">
+                <PencilSquareIcon className="h-6 w-6 transition stroke-white ml-70 hover:stroke-neutral-900" />
+              </button>
+            </div>
           </div>
         </main>
       </div>
