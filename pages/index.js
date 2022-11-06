@@ -18,7 +18,7 @@ export default function Home() {
           <link rel="icon" href="/logo.svg" />
         </Head>
         <Menu />
-        <main className="w-full ">
+        <main className="w-full ml-5">
           <div className="bg-orange-600 w-3/4 h-10 mt-2 rounded-lg">
             <input type="text" className="rounded-lg flex-1 ml-14 mt-1 h-8 absolute"></input>
             <button className="w-6 h-6 bg-orange-600 ml-80 mt-2 rounded-lg">
