@@ -1,17 +1,17 @@
 import { unstable_getServerSession } from "next-auth/next"
 import { authOptions } from '/pages/api/auth/[...nextauth]'
 
-export const useHandler = (...args) => async (req, res) => {
+export const createHandler = (...args) => async (req, res) => {
     try {
         const middlewares = args.slice(0, -1)
-        for(middleware of middlewares)
-            middlewares(req, res)
+        for(const middleware of middlewares)
+            await middleware(req, res)
         const handlers = args.at(-1)
         const fn = handlers[req.method]
         if(!fn) throw { status: 405, message: "Method not allowed" }
-        await fn(req, res, session)
+        await fn(req, res)
     } catch ({ status = 500, message }) {
-        console.log(error.message)
+        console.log(message)
         res.status(status).send({ message })
     }
 }
