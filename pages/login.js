@@ -1,20 +1,24 @@
 import { signIn } from "next-auth/react"
 import { authOptions } from './api/auth/[...nextauth]'
 import { unstable_getServerSession } from "next-auth/next"
+import Image from "next/image"
 
 const Login = () => {
   return (
     <>
-      <div className="min-h-screen flex flex-col justify-center bg-indigo-600">
+      <div className="min-h-screen flex flex-col justify-center bg-green-300">
         <div className="bg-white mx-auto max-w-md py-8 px-10 shadow rounded-lg">
           <div className="mb-4">
-            <img src="/" alt=""/>
+            <Image
+              src="/img/box.png"
+              width={250}
+              height={250}
+            />
           </div>
-          <form>
-            <div className="mb-4">
-              <button onClick={()=> signIn('google')} className="inline-block w-full px-8 py-4 leading-none text-white bg-indigo-600 hover:bg-indigo-700 font-semibold rounded shadow">¡Inicia sesión!</button>
-            </div>
-          </form>
+          <p className="font-semibold text-center mb-2 font-lg">Inicia sesion con: </p>
+          <div className="mb-4">
+            <button onClick={() => signIn('google')} className="inline-block w-full px-8 py-4 leading-none text-white bg-green-500 hover:bg-green-600 font-semibold rounded shadow">Google</button>
+          </div>
         </div>
       </div>
     </>
