@@ -23,8 +23,8 @@ export const authMiddleware = (status = 401) => async (req, res) => {
     req.session = session
 }
 
-export const withSchema = (schema, property = "body", handler) => async (req, res) => {
-    const result = schema.safeParse(req[property])
+export const withSchema = (schema, handler) => async (req, res) => {
+    const result = schema.safeParse(req.body)
     if(!result.success && result.error) throw { status: 400, message: result.error }
     await handler(req, res)
 }

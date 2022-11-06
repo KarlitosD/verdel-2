@@ -5,6 +5,8 @@ import List from "./List";
 
 const User = sequelize.define("user", {
     ...models.User
+},{
+    timestamps: false
 })
 
 List.belongsTo(User, { as: "creator" })

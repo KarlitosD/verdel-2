@@ -1,4 +1,4 @@
-import { createHandler, authMiddleware } from "/middlewares"
+import { createHandler, authMiddleware } from "/server/middlewares"
 import Models from "/db/models/index.js"
 const { List, User } = Models
 

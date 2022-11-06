@@ -1,11 +1,12 @@
 import { uid } from "uid/secure"
-import { createHandler, authMiddleware } from "/middlewares"
+import { createHandler, authMiddleware, withSchema } from "/server/middlewares"
 import Models from "/db/models"
+import { createProductSchema } from "server/schemas"
 
 const { Product } = Models
 
 const handlers = {
-    async POST(req, res){
+    POST: withSchema(createProductSchema, async (req, res) => {
         const { name, description, sectionId } = req.body
         console
         const newProduct = await Product.create({ 
@@ -15,7 +16,7 @@ const handlers = {
             sectionId 
         })
         res.send({ message: "Product created", product: newProduct })
-    }
+    })
 }
 
 export default createHandler(authMiddleware(), handlers)

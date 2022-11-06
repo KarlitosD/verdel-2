@@ -10,12 +10,13 @@ const Login = () => {
         <div className="bg-white mx-auto max-w-md py-8 px-10 shadow rounded-lg">
           <div className="mb-4">
             <Image
-              src="/img/box.png"
+              src="/logo.svg"
               width={250}
               height={250}
+              alt=""
             />
           </div>
-          <p className="font-semibold text-center mb-2 font-lg">Inicia sesion con: </p>
+          <p className="font-semibold text-center mb-2 font-lg">Inicia sesión con: </p>
           <div className="mb-4">
             <button onClick={() => signIn('google')} className="inline-block w-full px-8 py-4 leading-none text-white bg-green-500 hover:bg-green-600 font-semibold rounded shadow">Google</button>
           </div>
