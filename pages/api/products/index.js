@@ -1,6 +1,5 @@
-import { unstable_getServerSession } from "next-auth/next"
 import { uid } from "uid/secure"
-import { authOptions } from '/pages/api/auth/[...nextauth]'
+import { createHandler, authMiddleware } from "/middlewares"
 import Models from "/db/models"
 
 const { Product } = Models
@@ -19,13 +18,4 @@ const handlers = {
     }
 }
 
-export default async function handler(req, res){
-    try {
-        const session = await unstable_getServerSession(req, res, authOptions)
-        if(!session) throw new Error("No autorizado")
-        const fn = handlers[req.method]
-        if(fn) await fn(req, res, session)
-    } catch (error) {
-        res.status(400).send({ message: error.message })
-    }
-}
+export default createHandler(authMiddleware(), handlers)
