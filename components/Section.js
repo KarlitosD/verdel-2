@@ -2,15 +2,15 @@ import { ChevronDownIcon, PencilSquareIcon } from "@heroicons/react/24/outline";
 import { useState } from "react";
 import Product from "./Product";
 
-export default function Section() {
+export default function Section({ section }) {
   const [isVisible, setIsVisible] = useState(false);
   return (
     <div
-      className={`bg-orange-600 w-3/4 mx-auto rounded-lg overflow-hidden h-fit px-2 py-3 ml-5`}
+      className={`bg-orange-600 w-3/4 mx-auto rounded-lg overflow-hidden h-fit px-2 py-3 ml-5 my-4`}
     >
       <div className="flex items-center px-5 relative">
         <div className="flex gap-4 items-center">
-          <input type="text" className="rounded-lg h-8 w-60"></input>
+          <input type="text" className="rounded-lg h-8 w-60" value={section?.name} readOnly />
           <button className="rounded-lg flex items-center">
             <PencilSquareIcon className="h-6 w-6 transition stroke-white hover:stroke-neutral-900" />
           </button>
@@ -34,10 +34,9 @@ export default function Section() {
         <button className="h-10 w-80 bg-trasparent  rounded-lg flex-1 mx-auto my-5 outline outline-offset-2 outline-orange-600 text-lg font-bold font-mono hover:bg-gray-800">
           <p>Nuevo producto (っ◔◡◔)っ</p>
         </button>
-        <Product />
-        <Product />
-        <Product />
-        <Product />
+        { section?.products?.map(product => {
+          <Product product={product}/>
+        }) }
       </div>
     </div>
   );
