@@ -20,7 +20,17 @@ const handlers = {
     })
     if(!list) throw { status: 404, message: "List not found" }
     res.send(list)
-  } 
+  },
+  async PATCH(req, res){
+    const { query, body } = req
+    await List.update({ ...body },{ where: { id: query.id } })
+    res.send({ message: "List edited" })
+  },
+  async DELETE(req, res){
+    const { id } = req.query
+    await List.destroy({ where: { id } })
+    res.send({ message: "List deleted" })
+}
 }
 
 export default createHandler(authMiddleware(), handlers)
