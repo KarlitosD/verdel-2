@@ -14,5 +14,8 @@ module.exports = {
   safelist: [
     ...generateColorSafe("bg"),
     ...generateColorSafe("text"),
-  ]
+  ],
+  plugins: [
+    require('tailwind-scrollbar')({ nocompatible: true }),
+]
 }

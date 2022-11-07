@@ -27,13 +27,16 @@ export default function Section() {
         </button>
       </div>
       <div
-        className={`bg-gray-700 w-full rounded-lg mt-3 px-5 py-7 text-center text-white ${
+        className={`bg-gray-700 w-full rounded-lg max-h-72 mt-3 px-5 py-7 text-center text-white scrollbar-thin scrollbar-thumb-rounded-md scrollbar-thumb-gray-800 scrollbar-track-gray-700 ${
           isVisible ? "block" : "hidden"
         }`}
       >
         <button className="h-10 w-80 bg-trasparent  rounded-lg flex-1 mx-auto my-5 outline outline-offset-2 outline-orange-600 text-lg font-bold font-mono hover:bg-gray-800">
           <p>Nuevo producto (っ◔◡◔)っ</p>
         </button>
+        <Product />
+        <Product />
+        <Product />
         <Product />
       </div>
     </div>
