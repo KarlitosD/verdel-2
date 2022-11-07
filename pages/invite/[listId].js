@@ -16,8 +16,11 @@ export default function List({ list }) {
     const hasSelf = list?.users.some(user => user.id === session?.user?.id)
     
     const enterList = () => {
+        setLoading(true)
         fetch(`/api/lists/${list.id}/members`, { method: "POST" })
-            .then(() => router.push("/" + list.id))
+            .then(() => {
+                router.push("/" + list.id)
+            })
     }
 
     return (
@@ -35,7 +38,7 @@ export default function List({ list }) {
                             ? <Link href={`/${list.id}`}>
                                 <a className={classesButton}>Ir a la lista</a>
                             </Link>
-                            : <button className={classesButton} onClick={enterList}>Entrar a la lista</button>
+                            : <button className={classesButton} onClick={enterList} disabled={loading}>Entrar a la lista</button>
                     }
                 </div>
             </div>
