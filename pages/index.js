@@ -38,9 +38,11 @@ export default function Home() {
                 className="text-center h-6 text-white hover:text-neutral-900 absolute mt-1 left-1/2 -translate-x-1/2"
               >
                 <ChevronDownIcon
-                  className={`h-6 w-6 transition duration-200 stroke-current ${isVisible ? "rotate-0" : "rotate-180" }`}
+                  className={`h-6 w-6 transition duration-200 stroke-current ${
+                    isVisible ? "rotate-0" : "rotate-180"
+                  }`}
                 />
-              </button> 
+              </button>
             </div>
             <div
               className={`bg-gray-700 w-full rounded-lg mt-3 px-5 py-7 text-center text-white ${
@@ -52,27 +54,16 @@ export default function Home() {
               </button>
               <div className="bg-orange-600 rounded-lg flex items-center justify-between px-2 py-2">
                 <div className="flex items-center gap-4">
-                  <input type="text" className="rounded-lg h-8 max-w-100"></input>
+                  <input
+                    type="text"
+                    className="rounded-lg h-8 max-w-100"
+                  ></input>
                   <button className="w-6 h-6 rounded-lg">
                     <PencilSquareIcon className="h-6 w-6 transition stroke-current hover:stroke-neutral-900" />
                   </button>
                 </div>
                 <button className="w-6 h-6 rounded-lg">
                   <TrashIcon className="h-6 w-6 transition stroke-current hover:stroke-neutral-900" />
-                </button>
-              </div>
-            </div>
-            <div className={`bg-gray-700 w-full h-80 ${isVisible ? "visible" : "invisible"}`}>
-              <button className="h-10 w-80 bg-gray-700 text-white rounded-lg flex-1 ml-60 mt-10 outline outline-offset-2 outline-orange-600 text-lg font-bold font-mono hover:bg-gray-800">
-                <p>Nuevo producto (っ◔◡◔)っ</p>
-              </button>
-              <div className="h-10 w-90 mt-10 ml-5 mr-5 bg-orange-400 rounded-lg">
-                <input type="text" className="rounded-lg flex-1 ml-1 mt-1 h-8 w-80 absolute"></input>
-                <button className="w-6 h-6 bg-orange-400 ml-80 mt-2 rounded-lg">
-                  <TrashIcon className="h-6 w-6 transition stroke-white ml-80 hover:stroke-neutral-900" />
-                </button>
-                <button className="w-6 h-6 bg-orange-400 ml-70 mt-2 rounded-lg">
-                  <PencilSquareIcon className="h-6 w-6 transition stroke-white ml-70 hover:stroke-neutral-900" />
                 </button>
               </div>
             </div>
