@@ -10,10 +10,10 @@ const Login = () => {
         <div className="bg-white mx-auto max-w-md py-8 px-10 shadow rounded-lg">
           <div className="mb-4">
             <Image
-              src="/logo.svg"
-              width={250}
-              height={250}
-              alt=""
+                src="/logo.svg"
+                width={250}
+                height={250}
+                alt=""
             />
           </div>
           <p className="font-semibold text-center mb-2 font-lg">Inicia sesión con: </p>
