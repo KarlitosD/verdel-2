@@ -12,7 +12,7 @@ export default function Menu() {
   }
   return (
     <>
-      <div className="w-1/5 flex flex-col  border-r border-gray-100 min-h-screen bg-gray-50 dark:bg-stone-800 dark:border-gray-700 scrollbar-thin scrollbar-thumb-rounded-md scrollbar-thumb-gray-800 scrollbar-track-gray-700">
+      <div className="w-1/5 flex flex-col max-h-screen border-r border-gray-100 min-h-screen bg-gray-50 dark:bg-stone-800 dark:border-gray-700 scrollbar-thin scrollbar-thumb-rounded-md scrollbar-thumb-gray-800 scrollbar-track-gray-700">
         <MenuHeader handleAddList={handleAddList} />
         {lists?.map((list) => (
           <div
