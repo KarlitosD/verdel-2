@@ -9,12 +9,12 @@ export default function Menu() {
   if (!lists) return <div>Loading</div>;
   return (
     <>
-      <div className="w-1/5 flex flex-col bg-gray-50 border-r border-gray-100 min-h-screen">
+      <div className="w-1/5 flex flex-col bg-gray-50 border-r border-gray-100 min-h-screen dark:bg-gray-600">
         <MenuHeader />
         {lists?.map((list) => (
           <div
             key={list.id}
-            className="flex items-center py-2 pl-2 mr-2 border-b border-gray-500 cursor-pointer hover:bg-gray-200"
+            className="flex items-center py-2 pl-2 mr-2 border-b border-gray-500 cursor-pointer hover:bg-gray-200 dark:hover:bg-gray-400"
           >
             <Link href={`/${list.id}`}>
               <a className="flex lace-items-center w-full">
