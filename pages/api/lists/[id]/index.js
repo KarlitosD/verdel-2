@@ -13,6 +13,7 @@ const handlers = {
       users: { model: User, through: { attributes: [] } },
       sections: { model: Section},
       products: { model: Section, include: Product },
+      minimal: {}
     }
     const list = await List.findByPk(listId, {
       include: includes[include]
