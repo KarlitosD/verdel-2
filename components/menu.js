@@ -10,15 +10,15 @@ export default function Menu() {
 
   return (
     <>
-      <div className="w-1/5 flex flex-col bg-gray-300 border-r border-gray-500 h-screen">
+      <div className="w-1/5 flex flex-col bg-gray-50 border-r border-gray-100 min-h-screen">
         <MenuHeader/>
         {lists?.map((list) => (
           <div
             key={list.id}
-            className="flex items-center pt-2 pl-2 mr-2 border-b border-gray-500 cursor-pointer hover:bg-gray-400"
+            className="flex items-center pt-2 pl-2 mr-2 border-b border-gray-500 cursor-pointer hover:bg-gray-200"
           >
-            <Link href={`/api/lists/${encodeURIComponent(list.id)}/sections`}>
-              <div>
+            <Link href={`/${list.id}`}>
+              <a>
                 <div className="inline ml-1">
                   <Jazzicon
                     diameter={50}
@@ -31,7 +31,7 @@ export default function Menu() {
                   />
                 </div>
                 <h1 className="inline ml-2 pb-3 w-full">{list.name}</h1>
-              </div>
+              </a>
             </Link>
           </div>
         ))}
