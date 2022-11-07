@@ -1,4 +1,8 @@
-export default function useSections(listId) {
-    const {data : sections} = useSWR(`/api/lists/${listId}/sections`)
-    return{sections}
+import useSWR from "swr"
+
+export default function useSections(listId, prefetchData = null) {
+    const { data : sections, error } = useSWR(`/api/lists/${listId}/sections`, null,{
+        fallbackData: prefetchData
+    })
+    return{ sections, loading: !sections, error }
 }
