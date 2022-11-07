@@ -11,7 +11,7 @@ export default function useSections(listId, prefetchSections = null) {
     const loading = useMemo(() => !sections && !error, [sections, error])
 
     useEffect(() => {
-        alert(error.info)
+        error && alert(error.info)
     }, [error])
 
     const addSection = (newSection) => {

@@ -11,7 +11,7 @@ export default function useProducts(sectionId, prefetchProducts = null){
     const loading = useMemo(() => !products && !error, [products, error])
 
     useEffect(() => {
-        alert(error.info)
+        error && alert(error.info)
     }, [error])
 
     const addProduct = (newProduct) => {

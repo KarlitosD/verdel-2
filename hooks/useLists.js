@@ -11,7 +11,7 @@ export default function useLists(prefetchLists = null){
     const loading = useMemo(() => !lists && !error, [lists, error])
 
     useEffect(() => {
-        alert(error.info)
+        error && alert(error.info)
     }, [error])
 
     const addList = (newList) => {
