@@ -45,7 +45,7 @@ export default function Home() {
               </button>
             </div>
             <div
-              className={`bg-gray-700 w-full rounded-lg mt-3 px-5 py-7 text-center text-white ${
+              className={`bg-gray-700 w-full rounded-lg mt-3 px-5 py-7 text-center text-white overflow-y-scroll ${
                 isVisible ? "block" : "hidden"
               }`}
             >
