@@ -11,8 +11,8 @@ export default function MenuHeader() {
       {
         data?.user?.image && <Image
           src={data?.user?.image}
-          width={50}
-          height={50}
+          width={40}
+          height={40}
           alt="Imagen del perfil"
           className="rounded-full"
         />

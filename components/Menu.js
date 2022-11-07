@@ -20,7 +20,7 @@ export default function Menu() {
               <a className="flex lace-items-center w-full">
                 <span className="max-h-[50px] max-w-[50px]">
                   <Jazzicon
-                    diameter={50}
+                    diameter={45}
                     seed={Number(
                       list.name
                         ?.split("")
