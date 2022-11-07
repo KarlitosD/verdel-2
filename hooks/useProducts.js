@@ -1,8 +1,8 @@
 import { useEffect, useMemo } from "react";
 import useSWR from "swr"
 
-export default function useProducts(sectionId, prefetchProducts = null){
-    const { products, error ,mutate } = useSWR(`/api/sections/${sectionId}/products`, null, {
+export default function useProducts(sectionId = null, prefetchProducts = null){
+    const { data: products, error ,mutate } = useSWR(sectionId ? `/api/sections/${sectionId}/products` : null, null, {
         fallbackData: prefetchProducts,
         revalidateOnMount: !prefetchProducts,
         refreshInterval: 30000 //Refresh every 30 seconds 
@@ -11,7 +11,7 @@ export default function useProducts(sectionId, prefetchProducts = null){
     const loading = useMemo(() => !products && !error, [products, error])
 
     useEffect(() => {
-        error && alert(error.info)
+        error && console.error(error.info)
     }, [error])
 
     const addProduct = (newProduct) => {
@@ -38,6 +38,7 @@ export default function useProducts(sectionId, prefetchProducts = null){
     }
 
     const deleteProduct = (productId) => {
+        mutate(products.filter(product => product.id !== productId), { optimisticData: true, revalidate: false })
         fetch("/api/products/" + productId, {
             method: "DELETE",
         }).then(() => mutate())
