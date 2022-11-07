@@ -15,7 +15,7 @@ export default function Header({ name, users }) {
       />
       <div className="ml-4">
         <h1 className="text-gray-800 font-extrabold text-lg">{name}</h1>
-        <h2 className="text-black font-semibold">{users.map((user) => user.name).join(", ")}</h2>
+        <h2 className="text-black font-semibold">{users?.map((user) => user.name).join(", ")}</h2>
       </div>
     </div>
   );
