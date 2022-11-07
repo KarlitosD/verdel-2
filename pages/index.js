@@ -1,15 +1,7 @@
-import { useState } from "react";
 import Head from "next/head";
 import Menu from "components/Menu";
-// import styled from "styled-components"
 import { unstable_getServerSession } from "next-auth/next";
 import { authOptions } from "./api/auth/[...nextauth]";
-import {
-  ChevronDownIcon,
-  PencilSquareIcon,
-  TrashIcon,
-} from "@heroicons/react/24/outline";
-import useSections from "hooks/useSections";
 import Header from "components/Header";
 import Section from "components/Section";
 
@@ -24,7 +16,7 @@ export default function Home() {
       <div className="min-h-screen inline-flex w-full justify-center bg-gray-200">
         <Menu />
         <main className="w-full">
-          <Header />
+          <Header/>
           <Section />
         </main>
       </div>
@@ -49,6 +41,6 @@ export const getServerSideProps = async (context) => {
   }
 
   return {
-    props: { session },
+    props: {},
   };
 };

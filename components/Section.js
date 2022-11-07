@@ -1,9 +1,13 @@
 import { ChevronDownIcon, PencilSquareIcon } from "@heroicons/react/24/outline";
-import { useState } from "react";
+import { useMemo, useState } from "react";
 import Product from "./Product";
 
-export default function Section({ section }) {
-  const [isVisible, setIsVisible] = useState(false);
+export default function Section({ section, openSection, setOpenSection }) {
+  const handleClick = () => {
+    setOpenSection(section.id !== openSection ? section.id : "")
+  }
+  const isOpen = useMemo(() => openSection === section.id ,[openSection, section])
+
   return (
     <div
       className={`bg-orange-600 w-3/4 mx-auto rounded-lg overflow-hidden h-fit px-2 py-3 ml-5 my-4`}
@@ -16,19 +20,19 @@ export default function Section({ section }) {
           </button>
         </div>
         <button
-          onClick={() => setIsVisible((isVisible) => !isVisible)}
+          onClick={handleClick}
           className="text-center h-6 text-white hover:text-neutral-900 absolute mt-1 left-1/2 -translate-x-1/2"
         >
           <ChevronDownIcon
             className={`h-6 w-6 transition duration-200 stroke-current ${
-              isVisible ? "rotate-0" : "rotate-180"
+              isOpen ? "rotate-0" : "rotate-180"
             }`}
           />
         </button>
       </div>
       <div
         className={`bg-gray-700 w-full rounded-lg max-h-72 mt-3 px-5 py-7 text-center text-white scrollbar-thin scrollbar-thumb-rounded-md scrollbar-thumb-gray-800 scrollbar-track-gray-700 ${
-          isVisible ? "block" : "hidden"
+          isOpen ? "block" : "hidden"
         }`}
       >
         <button className="h-10 w-80 bg-trasparent  rounded-lg flex-1 mx-auto my-5 outline outline-offset-2 outline-orange-600 text-lg font-bold font-mono hover:bg-gray-800">

@@ -1,14 +1,15 @@
 import Head from "next/head";
-import { useRouter } from "next/router";
 import { unstable_getServerSession } from "next-auth";
 import { authOptions } from "/pages/api/auth/[...nextauth]";
 import Header from "components/Header";
 import Menu from "components/Menu";
 import Section from "components/Section";
 import useSections from "hooks/useSections";
+import { useState } from "react";
 
 export default function List({ list }) {
     const { sections, loading } = useSections(list.id);
+    const [openSection, setOpenSection] = useState("") 
     console.log(sections);
     return (
         <>
@@ -24,7 +25,7 @@ export default function List({ list }) {
                     {  
                         loading 
                             ? <div>loading..</div>
-                            : sections?.map(section => <Section key={section.id} section={section}/>)
+                            : sections?.map(section => <Section key={section.id} section={section} openSection={openSection} setOpenSection={setOpenSection}/>)
                     }
                 </main>
             </div>

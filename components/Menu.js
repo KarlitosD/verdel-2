@@ -4,21 +4,20 @@ import Jazzicon from "react-jazzicon";
 import Link from "next/link";
 import MenuHeader from "./MenuHeader";
 
-export default function Menu({  }) {
-  // const { data: lists } = useSWR("/api/lists");
-  // if(!lists) return <div>Loading</div>
-  const lists = [{}]
+export default function Menu() {
+  const { data: lists } = useSWR("/api/lists");
+  if(!lists) return <div>Loading</div>
   return (
     <>
       <div className="w-1/5 flex flex-col bg-gray-50 border-r border-gray-100 min-h-screen">
-        {/* <MenuHeader/> */}
+        <MenuHeader />
         {lists?.map((list) => (
           <div
             key={list.id}
             className="flex items-center pt-2 pl-2 mr-2 border-b border-gray-500 cursor-pointer hover:bg-gray-200"
           >
             <Link href={`/${list.id}`}>
-              <a>
+              <a className="w-full">
                 <Jazzicon
                   diameter={50}
                   seed={Number(
@@ -35,5 +34,5 @@ export default function Menu({  }) {
         ))}
       </div>
     </>
-  );
+  )
 }
