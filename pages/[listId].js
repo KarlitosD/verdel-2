@@ -19,20 +19,20 @@ export default function List({ list }) {
       </Head>
       <div className="min-h-screen inline-flex w-full justify-center">
         <Menu />
-        <main className="w-full">
+        <main className="w-full bg-gray-200 dark:bg-gray-900">
           <Header listTitle={list.name} />
-          {loading ? (
-            <div>loading..</div>
-          ) : (
-            sections?.map((section) => (
-              <Section
-                key={section.id}
-                section={section}
-                openSection={openSection}
-                setOpenSection={setOpenSection}
-              />
-            ))
-          )}
+            {loading ? (
+              <div>loading..</div>
+            ) : (
+              sections?.map((section) => (
+                <Section
+                  key={section.id}
+                  section={section}
+                  openSection={openSection}
+                  setOpenSection={setOpenSection}
+                />
+              ))
+            )}
         </main>
       </div>
     </>
