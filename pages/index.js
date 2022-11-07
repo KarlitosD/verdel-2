@@ -14,7 +14,7 @@ export default function Home() {
       </Head>
       <div className="min-h-screen inline-flex w-full justify-center">
         <Menu />
-        <main className="w-full bg-gray-200 dark:bg-gray-900">
+        <main className="w-full">
           <Header/>
         </main>
       </div>

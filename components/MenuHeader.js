@@ -18,7 +18,7 @@ export default function MenuHeader() {
         />
       }
       <button onClick={() => setTheme(theme === 'dark' ? 'light' : 'dark')}>toggle</button>
-      <button className="text-4xl text-black dark:text-white">+</button>
+      <button className="text-4xl text-black">+</button>
     </div>
   );
 }
