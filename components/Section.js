@@ -38,9 +38,9 @@ export default function Section({ section, openSection, setOpenSection }) {
         <button className="h-10 w-80 bg-trasparent  rounded-lg flex-1 mx-auto my-5 outline outline-offset-2 outline-orange-600 text-lg font-bold font-mono hover:bg-gray-800">
           <p>Nuevo producto (っ◔◡◔)っ</p>
         </button>
-        { section?.products?.map(product => {
-          <Product product={product}/>
-        }) }
+        { section?.products?.map(product => (
+          <Product key={product.id} product={product}/>
+        )) }
       </div>
     </div>
   );
