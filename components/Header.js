@@ -12,7 +12,7 @@ export default function Header({ listTitle }) {
                       .join("")
                   )}
                 />
-        <h1 className="ml-4 text-black dark:text-white font-extrabold text-lg">
+        <h1 className="ml-4 text-gray-800 font-extrabold text-lg">
             {listTitle}
         </h1>
     </div>
