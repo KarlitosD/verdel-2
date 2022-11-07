@@ -27,10 +27,10 @@ export default function List({ list }) {
         <main className="w-full bg-gray-200 dark:bg-gray-900">
         <Header {...list} />
           <button 
-            className="h-10 w-80 bg-trasparent block rounded-lg flex-1 mx-auto my-5 outline outline-offset-2 outline-orange-600 text-lg font-bold font-mono hover:bg-gray-800"
+            className="h-10 w-80 bg-trasparent block rounded-lg flex-1 mx-auto my-5 outline outline-offset-2 outline-orange-600 text-lg font-bold font-mono hover:bg-gray-300 dark:hover:bg-gray-800"
             onClick={handleAddSection}
           >
-            <p className="text-white">Nueva seccion</p>
+            <p className="text-black dark:text-white">Nueva seccion</p>
           </button>
           {loading ? (
             <div>loading..</div>
