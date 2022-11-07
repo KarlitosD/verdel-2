@@ -17,7 +17,6 @@ export default function Home() {
         <Menu />
         <main className="w-full">
           <Header/>
-          <Section />
         </main>
       </div>
     </>
