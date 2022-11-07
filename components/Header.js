@@ -4,7 +4,7 @@ export default function Header({ listTitle }) {
     return (
     <div className="bg-orange-500 flex items-center w-full py-2 px-5">
         <Jazzicon
-                  diameter={40}
+                  diameter={45}
                   seed={Number(
                     listTitle
                       ?.split("")

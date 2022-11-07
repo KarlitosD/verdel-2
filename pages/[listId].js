@@ -21,18 +21,21 @@ export default function List({ list }) {
         <Menu />
         <main className="w-full bg-gray-200 dark:bg-gray-900">
           <Header listTitle={list.name} />
-            {loading ? (
-              <div>loading..</div>
-            ) : (
-              sections?.map((section) => (
-                <Section
-                  key={section.id}
-                  section={section}
-                  openSection={openSection}
-                  setOpenSection={setOpenSection}
-                />
-              ))
-            )}
+          <button className="h-10 w-80 bg-trasparent block rounded-lg flex-1 mx-auto my-5 outline outline-offset-2 outline-orange-600 text-lg font-bold font-mono hover:bg-gray-800">
+            <p className="text-white">Nueva seccion</p>
+          </button>
+          {loading ? (
+            <div>loading..</div>
+          ) : (
+            sections?.map((section) => (
+              <Section
+                key={section.id}
+                section={section}
+                openSection={openSection}
+                setOpenSection={setOpenSection}
+              />
+            ))
+          )}
         </main>
       </div>
     </>

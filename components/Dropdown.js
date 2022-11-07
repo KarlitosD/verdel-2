@@ -25,7 +25,7 @@ export default function Dropdown({ children, options }) {
           aria-orientation="vertical"
           aria-labelledby="menu-button"
           tabIndex="-1"
-        >
+        > 
           {options &&
             options.map((option) => (
               <Link

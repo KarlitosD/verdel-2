@@ -20,7 +20,7 @@ export default function MenuHeader() {
         />
       )}
       </Dropdown>
-      <button onClick={() => setTheme(theme === 'dark' ? 'light' : 'dark')}>toggle</button>
+      <button className=" text-white font-bold py-2 px-4 rounded-full" onClick={() => setTheme(theme === 'dark' ? 'light' : 'dark')}></button>
       <button className="text-4xl text-black">+</button>
     </div>
   );
