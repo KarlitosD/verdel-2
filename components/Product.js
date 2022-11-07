@@ -21,7 +21,7 @@ export default function Product({ product }) {
   return (
     <div className="bg-orange-600 rounded-lg flex items-center justify-between px-2 py-2 mt-2">
       <div className="flex items-center gap-4">
-        <input type="text" className="rounded-lg h-8 max-w-100 text-black dark:bg-white" value={productName} readOnly={!isEditable} onChange={handleChange}/>
+        <input type="text" className="rounded-lg h-8 max-w-100 text-black dark:bg-white px-2" value={productName} readOnly={!isEditable} onChange={handleChange}/>
         <button className="w-6 h-6 rounded-lg" onClick={toggleEditName}>
           <PencilSquareIcon className={`h-6 w-6 transition ${isEditable ? "stroke-white": "stroke-black hover:stroke-white"}`} />
         </button>

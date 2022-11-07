@@ -36,26 +36,28 @@ export default function Section({ section, openSection, setOpenSection }) {
     >
       <div className="flex items-center justify-between px-6">
         <div className="flex gap-4 items-center">
-          <input type="text" className="rounded-lg h-8 w-60 text-black dark:bg-white" value={sectionName} readOnly={!isEditable} onChange={e => setSectionName(e.target.value)} />
+          <input type="text" className="rounded-lg h-8 w-60 text-black dark:bg-white px-2" value={sectionName} readOnly={!isEditable} onChange={e => setSectionName(e.target.value)} />
           <button className="rounded-lg flex items-center" onClick={toggleEditName}>
             <PencilSquareIcon className={`h-6 w-6 transition ${isEditable ? "stroke-white": "stroke-black hover:stroke-white"}`} />
           </button>
         </div>
         <button
           onClick={handleClick}
-          className="flex justify-center h-6 text-black hover:text-white w-60"
+          className="flex justify-center h-6 text-black hover:text-white w-96"
         >
           <ChevronDownIcon
             className={`h-6 w-6 transition duration-200 stroke-current ${isOpen ? "rotate-0" : "rotate-180"
               }`}
           />
         </button>
-        <button className="h-6 rounded-lg w-60 flex justify-end" onClick={handleDelete}>
-          <TrashIcon className="h-6 w-6 transition stroke-black hover:stroke-white" />
-        </button>
+        <div className="w-72 flex justify-end">
+          <button className="h-6 w-6 ">
+            <TrashIcon className="h-6 w-6 transition stroke-black hover:stroke-white" onClick={handleDelete} />
+          </button>
+        </div>
       </div>
       <div
-        className={`bg-gray-700 w-full rounded-lg max-h-72 mt-3 px-5 py-7 text-center text-white scrollbar-thin scrollbar-thumb-rounded-md scrollbar-thumb-gray-800 scrollbar-track-gray-700 ${isOpen ? "block" : "hidden"
+        className={`bg-gray-700 w-full rounded-lg max-h-72 mt-3 px-5 pt-4 pb-6 text-center text-white scrollbar-thin scrollbar-thumb-rounded-md scrollbar-thumb-gray-800 scrollbar-track-gray-700 ${isOpen ? "block" : "hidden"
           }`}
       >
         <button 
