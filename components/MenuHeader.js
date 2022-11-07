@@ -3,7 +3,7 @@ import { useSession } from "next-auth/react";
 import { useTheme } from "next-themes";
 import Dropdown from "./Dropdown";
 
-export default function MenuHeader() {
+export default function MenuHeader({ handleAddList }) {
   const { theme, setTheme } = useTheme();
   const { data } = useSession();
   const options = ["Modo Oscuro", "Cerrar Sesión"]
@@ -21,7 +21,7 @@ export default function MenuHeader() {
       )}
       </Dropdown>
       <button className=" text-white font-bold py-2 px-4 rounded-full" onClick={() => setTheme(theme === 'dark' ? 'light' : 'dark')}></button>
-      <button className="text-4xl text-black">+</button>
+      <button className="text-4xl text-black" onClick={handleAddList}>+</button>
     </div>
   );
 }

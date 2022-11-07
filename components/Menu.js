@@ -6,11 +6,14 @@ import MenuHeader from "./MenuHeader";
 import useLists from "hooks/useLists";
 
 export default function Menu() {
-  const { lists = [] } = useLists()
+  const { lists = [], addList } = useLists()
+  const handleAddList = () => {
+    addList({ name: "New List" })
+  }
   return (
     <>
       <div className="w-1/5 flex flex-col  border-r border-gray-100 min-h-screen bg-gray-50 dark:bg-stone-800 dark:border-gray-700 scrollbar-thin scrollbar-thumb-rounded-md scrollbar-thumb-gray-800 scrollbar-track-gray-700">
-        <MenuHeader />
+        <MenuHeader handleAddList={handleAddList} />
         {lists?.map((list) => (
           <div
             key={list.id}
