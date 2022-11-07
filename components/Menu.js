@@ -9,7 +9,7 @@ export default function Menu() {
   if (!lists) return <div>Loading</div>;
   return (
     <>
-      <div className="w-1/5 flex flex-col bg-gray-50 border-r border-gray-100 min-h-screen dark:bg-gray-600">
+      <div className="w-1/5 flex flex-col  border-r border-gray-100 min-h-screen bg-gray-50 dark:bg-gray-600">
         <MenuHeader />
         {lists?.map((list) => (
           <div

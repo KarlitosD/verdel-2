@@ -8,7 +8,7 @@ function MyApp({ Component, pageProps: { session, ...pageProps } }) {
   return (
     <SessionProvider session={session}>
       <SWRConfig value={{ fetcher }}>
-        <ThemeProvider>
+        <ThemeProvider attribute="class">
           <Component {...pageProps} />
         </ThemeProvider>
       </SWRConfig>
