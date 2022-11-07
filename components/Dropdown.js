@@ -1,5 +1,6 @@
 import { setTheme, useTheme } from "next-themes";
 import { useState } from "react";
+import { signOut } from "next-auth/react"
 
 export default function Dropdown({ children }) {
   const { theme, setTheme } = useTheme();
@@ -31,7 +32,7 @@ export default function Dropdown({ children }) {
             >
               toggle
             </button>
-            <button className="ml-4 text-red-500 font-semibold">Logout</button>
+            <button onClick={() => signOut()} className="ml-4 text-red-500 font-semibold">Logout</button>
           </div>
         </div>
       )}
