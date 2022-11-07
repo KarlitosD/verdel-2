@@ -4,10 +4,9 @@ import Dropdown from "./Dropdown";
 
 export default function MenuHeader({ handleAddList }) {
   const { data } = useSession();
-  const options = ["Modo Oscuro", "Cerrar Sesión"];
   return (
     <div className="bg-orange-500 flex w-full justify-between py-2 px-5">
-      <Dropdown options={options}>
+      <Dropdown>
         {data?.user?.image && (
           <Image
             src={data?.user?.image}
