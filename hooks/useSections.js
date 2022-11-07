@@ -1,11 +1,19 @@
+import { useEffect, useMemo } from "react";
 import useSWR from "swr"
 
 export default function useSections(listId, prefetchSections = null) {
-    const { data : sections, error, isValidating } = useSWR(`/api/lists/${listId}/sections`, null,{
+    const { data : sections, error, mutate } = useSWR(`/api/lists/${listId}/sections`, null,{
         fallbackData: prefetchSections,
-        revalidateOnMount: false,
+        revalidateOnMount: !prefetchSections,
         refreshInterval: 30000
     })
+
+    const loading = useMemo(() => !sections && !error, [sections, error])
+
+    useEffect(() => {
+        error && alert(error.info)
+    }, [error])
+
     const addSection = (newSection) => {
         fetch("/api/sections", {
             method: "POST",
@@ -35,5 +43,5 @@ export default function useSections(listId, prefetchSections = null) {
         }).then(() => mutate())
     }
 
-    return { sections, loading: !sections, addSection, editSection, deleteSection }
+    return { sections, loading, error, addSection, editSection, deleteSection }
 }

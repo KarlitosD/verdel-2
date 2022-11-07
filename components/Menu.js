@@ -3,10 +3,10 @@ import Jazzicon from "react-jazzicon";
 // import useSections from "hooks/useSections";
 import Link from "next/link";
 import MenuHeader from "./MenuHeader";
+import useLists from "hooks/useLists";
 
 export default function Menu() {
-  const { data: lists } = useSWR("/api/lists");
-  if (!lists) return <div>Loading</div>;
+  const { lists = [] } = useLists()
   return (
     <>
       <div className="w-1/5 flex flex-col  border-r border-gray-100 min-h-screen bg-gray-50 dark:bg-gray-700 dark:border-gray-700">
