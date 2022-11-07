@@ -2,7 +2,7 @@ import { useState } from "react";
 import { PencilSquareIcon, TrashIcon } from "@heroicons/react/24/outline";
 import useProducts from "hooks/useProducts";
 
-export default function Product({ product, products }) {
+export default function Product({ product }) {
   const { editProduct, deleteProduct } = useProducts(product.sectionId)
   const [productName, setProductName] = useState(product?.name || "")
   const [isEditable, setIsEditable] = useState(false)
