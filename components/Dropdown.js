@@ -1,4 +1,4 @@
-import { setTheme, useTheme } from "next-themes"
+import { setTheme, useTheme } from "next-themes";
 
 export default function Dropdown({ children }) {
   const { theme, setTheme } = useTheme();

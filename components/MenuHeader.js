@@ -18,7 +18,6 @@ export default function MenuHeader() {
           />
         )}
       </Dropdown>
-
       <button className="text-4xl text-black">+</button>
     </div>
   );
