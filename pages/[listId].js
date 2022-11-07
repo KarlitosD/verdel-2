@@ -8,9 +8,8 @@ import useSections from "hooks/useSections";
 import { useState } from "react";
 
 export default function List({ list }) {
-  const { sections, loading } = useSections(list.id);
+  const { sections, loading } = useSections(list.id, list.sections);
   const [openSection, setOpenSection] = useState("");
-  console.log(sections);
   return (
     <>
       <Head>
@@ -60,7 +59,6 @@ export async function getServerSideProps(context) {
     },
   });
   const list = await res.json();
-  console.log({ list, listId });
   return {
     props: {
       list,
