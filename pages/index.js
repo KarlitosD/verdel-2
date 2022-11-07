@@ -17,7 +17,7 @@ export default function Home() {
       <div className="min-h-screen inline-flex w-full justify-center">
         <Menu />
         <main className="w-full bg-gray-200 dark:bg-gray-900">
-          <Header />
+          <div className="w-full h-14 bg-orange-500"/>
           <div className=" w-60 h-60 mb-4 block flex-1 mx-auto my-5">
             <Image src="/img/boxx.png" width={250} height={250} alt="" />
           </div>

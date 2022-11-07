@@ -19,7 +19,7 @@ export default function Header({ name, users, id }) {
       await navigator.share({
         title: 'Link de invitacion',
         text: 'Usa este link para invitar a alguien a la lista',
-        url: process.env.NEXTAUTH_URL + "invite/" + id
+        url: "http://localhost:3000/invite/" + id
       });
     } catch (err) {
       alert(err)
@@ -45,10 +45,10 @@ export default function Header({ name, users, id }) {
               <PencilSquareIcon className={`h-6 w-6 transition ${isEditable ? "stroke-white" : "stroke-black hover:stroke-white"}`} />
             </button>
           </div>
-          <h2 className="text-black font-semibold">{users.map((user) => user.name).join(", ")}</h2>
+          <h2 className="text-black font-semibold">{users?.map((user) => user.name).join(", ")}</h2>
         </div>
       </div>
-      <button onClick={handleInvite}>Invitar</button>
+      <button onClick={handleInvite} className="my-auto mr-5 py-2 px-3 text-white font-semibold bg-orange-700 rounded-xl hover:bg-orange-800">Invitar</button>
     </div>
   );
 }

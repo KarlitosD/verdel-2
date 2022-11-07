@@ -32,7 +32,7 @@ export default function List({ list }) {
             </Head>
             <div className="h-screen grid place-content-center bg-gray-200 dark:bg-gray-900">
                 <div className="w-72 h-96 text-center bg-white rounded-md p-4 flex flex-col justify-center gap-4">
-                    <h1 className="text-gray-900 text-2xl font-semibold">{ hasSelf ? "Ya sos miembra de esta lista" : "Aun no sos miembra de esta lista" } </h1>
+                    <h1 className="text-gray-900 text-2xl font-semibold">{ hasSelf ? "Ya formas parte de esta lista" : "Aun no sos parte de esta lista" } </h1>
                     {
                         hasSelf
                             ? <Link href={`/${list.id}`}>
