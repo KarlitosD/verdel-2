@@ -1,12 +1,8 @@
 import { useEffect, useMemo } from "react";
-import useSWR from "swr";
+import useSWRImmutable from 'swr/immutable'
 
-export default function useLists(prefetchLists = null){
-    const { data: lists, error, mutate } = useSWR("/api/lists", null, {
-        fallbackData: prefetchLists,
-        revalidateOnMount: !prefetchLists,
-        revalidateOnFocus: false,
-    })
+export default function useLists(prefetchLists = []){
+    const { data: lists, error, mutate } = useSWRImmutable("/api/lists")
 
     const loading = useMemo(() => !lists && !error, [lists, error])
 
