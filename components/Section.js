@@ -22,6 +22,10 @@ export default function Section({ section, openSection, setOpenSection }) {
     editSection(section.id, { name: sectionName })
   }
 
+  const handleAddProduct = () => {
+    addProduct({ name: "New Product", description: "" })
+  }
+
   return (
     <div
       className="bg-orange-600 rounded-lg overflow-hidden h-fit px-2 py-3 mx-10 my-5"
@@ -47,11 +51,14 @@ export default function Section({ section, openSection, setOpenSection }) {
         className={`bg-gray-700 w-full rounded-lg max-h-72 mt-3 px-5 py-7 text-center text-white scrollbar-thin scrollbar-thumb-rounded-md scrollbar-thumb-gray-800 scrollbar-track-gray-700 ${isOpen ? "block" : "hidden"
           }`}
       >
-        <button className="h-10 w-80 bg-trasparent  rounded-lg flex-1 mx-auto my-5 outline outline-offset-2 outline-orange-600 text-lg font-bold font-mono hover:bg-gray-800">
+        <button 
+          className="h-10 w-80 bg-trasparent  rounded-lg flex-1 mx-auto my-5 outline outline-offset-2 outline-orange-600 text-lg font-bold font-mono hover:bg-gray-800"
+          onClick={handleAddProduct}
+        >
           <p className="text-white">Nuevo producto</p>
         </button>
         {products?.map(product => (
-          <Product key={product.id}/>
+          <Product key={product.id} product={product}/>
         ))}
       </div>
     </div>

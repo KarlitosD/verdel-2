@@ -2,7 +2,7 @@ import Image from "next/image";
 import { useSession } from "next-auth/react";
 import Dropdown from "./Dropdown";
 
-export default function MenuHeader() {
+export default function MenuHeader({ handleAddList }) {
   const { data } = useSession();
   const options = ["Modo Oscuro", "Cerrar Sesión"];
   return (
@@ -18,7 +18,7 @@ export default function MenuHeader() {
           />
         )}
       </Dropdown>
-      <button className="text-4xl text-black">+</button>
+      <button onClick={handleAddList} className="text-4xl text-black">+</button>
     </div>
   );
 }

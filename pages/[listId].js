@@ -8,8 +8,13 @@ import useSections from "hooks/useSections";
 import { useState } from "react";
 
 export default function List({ list }) {
-  const { sections, loading } = useSections(list.id, list.sections);
+  const { sections, loading, addSection } = useSections(list.id, list.sections);
   const [openSection, setOpenSection] = useState("");
+  
+  const handleAddSection = () => {
+    addSection({ name: "New section", color: "" })
+  }
+  
   return (
     <>
       <Head>
@@ -21,7 +26,10 @@ export default function List({ list }) {
         <Menu />
         <main className="w-full bg-gray-200 dark:bg-gray-900">
         <Header {...list} />
-          <button className="h-10 w-80 bg-trasparent block rounded-lg flex-1 mx-auto my-5 outline outline-offset-2 outline-orange-600 text-lg font-bold font-mono hover:bg-gray-800">
+          <button 
+            className="h-10 w-80 bg-trasparent block rounded-lg flex-1 mx-auto my-5 outline outline-offset-2 outline-orange-600 text-lg font-bold font-mono hover:bg-gray-800"
+            onClick={handleAddSection}
+          >
             <p className="text-white">Nueva seccion</p>
           </button>
           {loading ? (
